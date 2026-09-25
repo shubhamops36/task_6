@@ -67,7 +67,8 @@ class _VisionHomePageState extends State<VisionHomePage> {
   Future<void> _startCamera() async {
     await _controller?.dispose();
     if (widget.cameras.isEmpty) {
-      if (mounted) setState(() => _error = 'No camera available on this device');
+      if (mounted)
+        setState(() => _error = 'No camera available on this device');
       return;
     }
     final controller = CameraController(
@@ -95,7 +96,8 @@ class _VisionHomePageState extends State<VisionHomePage> {
       });
     } on CameraException catch (exception) {
       await controller.dispose();
-      if (mounted) setState(() => _error = exception.description ?? exception.code);
+      if (mounted)
+        setState(() => _error = exception.description ?? exception.code);
     }
   }
 
@@ -187,7 +189,7 @@ class _VisionHomePageState extends State<VisionHomePage> {
                   Expanded(
                     child: _Metric(
                       label: 'MODEL',
-                      value: 'YOLO EDGE',
+                      value: 'CAMERA DEMO',
                       icon: Icons.memory_rounded,
                     ),
                   ),
@@ -195,7 +197,7 @@ class _VisionHomePageState extends State<VisionHomePage> {
                   Expanded(
                     child: _Metric(
                       label: 'OBJECTS',
-                      value: _showBoxes ? '03 FOUND' : 'PAUSED',
+                      value: _showBoxes ? '3 DEMO BOXES' : 'OVERLAY OFF',
                       icon: Icons.center_focus_strong_rounded,
                     ),
                   ),
@@ -218,7 +220,7 @@ class _VisionHomePageState extends State<VisionHomePage> {
                           ? Icons.pause_rounded
                           : Icons.play_arrow_rounded,
                     ),
-                    tooltip: 'Pause processing',
+                    tooltip: 'Toggle demo status',
                   ),
                 ],
               ),
@@ -283,7 +285,7 @@ class _LiveBadge extends StatelessWidget {
             ),
             const SizedBox(width: 7),
             Text(
-              isProcessing ? 'LIVE / PROCESSING' : 'PAUSED',
+              isProcessing ? 'DEMO ACTIVE' : 'DEMO PAUSED',
               style: const TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w700,
@@ -320,7 +322,7 @@ class _Telemetry extends StatelessWidget {
             ),
             const SizedBox(height: 2),
             Text(
-              'END-TO-END LATENCY',
+              'SAMPLE LATENCY',
               style: TextStyle(
                 color: Colors.white.withValues(alpha: .65),
                 fontSize: 8,
@@ -399,21 +401,21 @@ class _DetectionOverlay extends StatelessWidget {
               top: height * .22,
               width: width * .29,
               height: height * .38,
-              label: 'PERSON 98%',
+              label: 'SAMPLE PERSON',
             ),
             _Box(
               left: width * .57,
               top: height * .30,
               width: width * .25,
               height: height * .28,
-              label: 'OBJECT 91%',
+              label: 'SAMPLE OBJECT',
             ),
             _Box(
               left: width * .40,
               top: height * .65,
               width: width * .18,
               height: height * .18,
-              label: 'CUP 87%',
+              label: 'SAMPLE CUP',
             ),
           ],
         );

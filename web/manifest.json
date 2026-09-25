@@ -1,11 +1,11 @@
 {
-    "name": "task_app",
-    "short_name": "task_app",
+    "name": "VisionFlow Camera Demo",
+    "short_name": "VisionFlow",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#080B0D",
+    "theme_color": "#080B0D",
+    "description": "A Flutter camera interface prototype with illustrative detection overlays.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
